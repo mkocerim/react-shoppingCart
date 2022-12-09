@@ -14,7 +14,7 @@ const Products = (props) => {
         <Link to="/cart">Sepetim</Link>
       </h2>
       {props.bookList.map((book) => (
-        <div className="book">
+        <div className="book" key={book.id}>
           <img src={book.image} alt={book.name} />
           <div>
             <h4>{book.name}</h4>
@@ -43,11 +43,7 @@ const Products = (props) => {
 const mapStateToProps = (state) => {
   return {
     bookList: state.bookList,
-    cart: state.cart
+    cart: state.cart,
   };
 };
-
-export default connect(
-  mapStateToProps, 
-{sepeteEkle}  
-)(Products);
+export default connect(mapStateToProps, { sepeteEkle })(Products);
